@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_nowplaying"
+        android:icon="@drawable/nowplaying_selector"
+        android:title="Now Playing" />
+
+    <item
+        android:id="@+id/navigation_toprated"
+        android:icon="@drawable/ic_top_rated"
+        android:title="Top Rated" />
+</menu>
