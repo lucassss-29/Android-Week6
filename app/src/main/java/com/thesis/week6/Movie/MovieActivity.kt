@@ -30,13 +30,13 @@ class MovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie)
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
-        adapter = MovieAdapter()
-        supportFragmentManager.commit {
+       // adapter = MovieAdapter()
+        /*supportFragmentManager.commit {
             setReorderingAllowed(true)
             replace<TopRatedFragment>(R.id.fragment_movie_container_view)
             addToBackStack(null)
 
-        }
+        }*/
         binding.navigationMovieView.setOnNavigationItemSelectedListener { item->
             when(item.itemId){
                 R.id.navigation_nowplaying ->{
@@ -62,6 +62,10 @@ class MovieActivity : AppCompatActivity() {
             }
         }
         setupToolbar()
+    }
+    override fun onStart() {
+        super.onStart()
+        viewModel.getNowPlaying()
     }
     fun setupToolbar(){
         val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar

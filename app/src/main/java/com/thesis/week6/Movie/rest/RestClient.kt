@@ -23,6 +23,10 @@ class RestClient {
     }
 
     private fun createMovieDBService() : MovieDBService{
+        //create okhttp
+        val httpClient = OkHttpClient.Builder()
+            .addInterceptor(AuthenticationInterceptor())
+            .build()
         //create retrofit
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")

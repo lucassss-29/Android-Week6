@@ -11,36 +11,39 @@
         android:roundIcon="@mipmap/ic_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidChallengeW3">
-        <activity android:name="com.thesis.week6.Restaurant.RestaurantActivity"></activity>
+
         <activity android:name="com.thesis.week6.Restaurant.Restaurant" />
         <activity android:name=".WelcomeActivity" />
         <activity
             android:name="com.thesis.week6.startup.SplashActivity"
             android:noHistory="true">
 <!--            android:theme="@style/SplashTheme">-->
+
+        </activity>
+        <activity
+            android:name="com.thesis.week6.Onboarding.Onboarding1Fragment"
+            android:noHistory="true" ></activity>
+        <activity
+            android:name=".Onboarding.Boarding2Activity"
+            android:noHistory="true" ></activity>
+        <activity
+            android:name=".activity.boarding.BoardingThreeActivity"
+            android:noHistory="true" ></activity>
+        <activity
+            android:name="com.thesis.week6.startup.WelcomeFragment"
+            android:noHistory="true" ></activity>
+        <activity
+            android:name="com.thesis.week6.startup.SignUpFragment"
+            android:noHistory="true" ></activity>
+        <activity android:name="com.thesis.week6.startup.SignInFragment" ></activity>
+        <activity android:name="com.thesis.week6.Restaurant.RestaurantActivity"></activity>
+        <activity android:name="com.thesis.week6.Movie.MovieActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.thesis.week6.Onboarding.Onboarding1Fragment"
-            android:noHistory="true" />
-        <activity
-            android:name=".Onboarding.Boarding2Activity"
-            android:noHistory="true" />
-        <activity
-            android:name=".activity.boarding.BoardingThreeActivity"
-            android:noHistory="true" />
-        <activity
-            android:name="com.thesis.week6.startup.WelcomeFragment"
-            android:noHistory="true" />
-        <activity
-            android:name="com.thesis.week6.startup.SignUpFragment"
-            android:noHistory="true" />
-        <activity android:name="com.thesis.week6.startup.SignInFragment" />
-        <activity android:name=".activity.profile.ProfileActivity" />
     </application>
 
 </manifest>
