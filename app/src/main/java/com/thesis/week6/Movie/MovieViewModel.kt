@@ -7,10 +7,9 @@ import com.thesis.week6.Movie.rest.RestClient
 import kotlinx.coroutines.launch
 
 class MovieViewModel:ViewModel() {
-
-    fun getNowPlaying() {
+    fun getNowPlaying(){
         viewModelScope.launch {
-            val movieResp = RestClient.getInstance().API.listNowPlayMovies(
+           val movieResp = RestClient.getInstance().API.listNowPlayMovies(
                 language = "en-US",
                 page = 1,
                 apiKey = "b4ae39a7e05c4636498b82ddcb9656d4"
