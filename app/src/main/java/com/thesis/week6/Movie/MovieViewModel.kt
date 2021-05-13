@@ -12,7 +12,8 @@ class MovieViewModel:ViewModel() {
         viewModelScope.launch {
             val movieResp = RestClient.getInstance().API.listNowPlayMovies(
                 language = "en-US",
-                page = 1
+                page = 1,
+                apiKey = "b4ae39a7e05c4636498b82ddcb9656d4"
             )
             Log.e("TAG", movieResp.results.toString())
         }

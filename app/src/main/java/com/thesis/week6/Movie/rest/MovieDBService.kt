@@ -10,7 +10,9 @@ interface MovieDBService {
     @GET("movie/now_playing")
     suspend fun listNowPlayMovies(
         @Query("language") language: String,
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String
+
     ): NowPlayingRes
 
 }
