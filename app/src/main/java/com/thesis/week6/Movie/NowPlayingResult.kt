@@ -1,7 +1,10 @@
 package com.thesis.week6.Movie
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class NowPlayingResult (
     val adult: Boolean? = null,
 
@@ -10,7 +13,7 @@ data class NowPlayingResult (
 
     @SerializedName("genre_ids")
     val genreIDS: List<Long>? = null,
-    val id: Long,
+    val id: Long? = null,
 
     @SerializedName("original_language")
     val originalLanguage: OriginalLanguage? = null,
@@ -33,7 +36,7 @@ data class NowPlayingResult (
 
     @SerializedName("vote_count")
     val voteCount: Long? = null
-    )
+    ): Parcelable
 
 
     enum class OriginalLanguage {

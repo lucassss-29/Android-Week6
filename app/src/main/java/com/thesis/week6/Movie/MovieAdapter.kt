@@ -1,5 +1,6 @@
 package com.thesis.week6.Movie
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.thesis.week6.R
-import com.thesis.week6.Restaurant.Restaurant
+import com.thesis.week6.Movie.NowPlayingResult
+import com.thesis.week6.R.id.tvResName
 
 class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>(){
     //    private lateinit var mLayoutManager : GridLayoutManager
@@ -19,7 +22,7 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>(){
     var isSwitchView : Boolean = true
 
     interface MovieAdapterListener{
-        fun onClickCheckBox(Res: Restaurant, isChecked:Boolean)
+        fun onClickItem(Mov: NowPlayingResult)
     }
     var  listener : MovieAdapterListener? = null
     var data: List<NowPlayingResult> = listOf()
@@ -46,14 +49,19 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
+
         holder.tvResName.text = item.title
         holder.tvResAddress.text = item.overview
-        val media = "https://image.tmdb.org/t/p/w500/" + item.posterPath
+        Log.e("Tile--------------->", item.title.toString())
+        val media = "https://image.tmdb.org/t/p/w500" + item.posterPath
         Glide.with(view)
             .load(media)
+            .diskCacheStrategy(DiskCacheStrategy.DATA)
             .into(holder.imgAvatar)
-//        holder.imgAvatar.setImageResource(item.avatar)
-
+//       holder.imgAvatar.setImageResource(item.avatar)
+        holder.itemView.setOnClickListener {
+            listener?.onClickItem(item)
+        }
     }
     override fun getItemCount(): Int {
         return data.size
@@ -73,6 +81,7 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>(){
         val tvResAddress = itemView.findViewById<TextView>(R.id.tvResAddress)
         val imgAvatar = itemView.findViewById<ImageView>(R.id.imageView)
        // var heartBox = itemView.findViewById<CheckBox>(R.id.Heartbox)
+
     }
 
 }

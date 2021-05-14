@@ -1,13 +1,13 @@
 package com.thesis.week6.Movie
 
 data class NowPlayingRes (
-    val dates: Dates? = null ,
-    val page: Long? = null ,
-    val results: List<NowPlayingResult>? = null ,
-    val totalPages: Long? = null ,
-    val totalResults: Long? = null
+    val dates: Dates,
+    val page: Long,
+    val results: List<NowPlayingResult>,
+    val totalPages: Long,
+    val totalResults: Long
     )
 data class Dates (
-    val maximum: String? = null ,
-    val minimum: String? = null
+    val maximum: String,
+    val minimum: String
 )

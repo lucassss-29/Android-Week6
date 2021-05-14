@@ -1,22 +1,25 @@
 package com.thesis.week6.Movie
 
 import android.os.Bundle
-import android.view.*
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.thesis.week6.AddRestaurantData
 import com.thesis.week6.R
-import com.thesis.week6.RemoveRestaurantData
-import com.thesis.week6.Restaurant.Restaurant
-import com.thesis.week6.Restaurant.RestaurantAdapter
 import com.thesis.week6.databinding.FragmentFavBinding
-import com.thesis.week6.setFavouriteChecked
 import kotlinx.android.synthetic.main.fragment_fav.*
-
+public lateinit var viewModel1: MovieViewModel
 class NowPlayingFragment: Fragment() {
     private lateinit var movieAdapter: MovieAdapter
     private lateinit var binding: FragmentFavBinding
-    private lateinit var viewModel: MovieViewModel
+
+    private lateinit var Adapter : MovieAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,11 +30,36 @@ class NowPlayingFragment: Fragment() {
     }
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
-        rcList.apply {
-            movieAdapter = MovieAdapter()
-            adapter = movieAdapter
-            movieAdapter.data = this@NowPlayingFragment.viewModel.getNowPlaying()
+        viewModel1 = ViewModelProvider(this).get(MovieViewModel::class.java)
+        viewModel1.run {
+            Log.e("Tile--------------->",listdata.toString())
+            listdata.observe(viewLifecycleOwner, Observer {
+                rcList.apply {
+                    Adapter = MovieAdapter()
+                    adapter = Adapter
+                    Adapter.data = it
+                    Adapter.listener = object : MovieAdapter.MovieAdapterListener{
+                        override fun onClickItem(Mov: NowPlayingResult) {
+                            setdataNowPlaying(Mov)
+                            childFragmentManager.commit {
+                                setReorderingAllowed(true)
+                                setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                                replace<DetailInformationFragment>(R.id.fragment_Inf_container_view)
+                                addToBackStack(null)
+                            }
+                        }
+                    }
+                }
+            })
         }
+    }
+    override fun onStart() {
+        super.onStart()
+        viewModel1.getNowPlaying()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Adapter.listener = null
     }
 }

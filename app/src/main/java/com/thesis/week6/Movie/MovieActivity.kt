@@ -2,6 +2,7 @@ package com.thesis.week6.Movie
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
@@ -11,31 +12,34 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.thesis.week6.R
-import com.thesis.week6.Restaurant.Restaurant
 import com.thesis.week6.databinding.ActivityMovieBinding
+import com.thesis.week6.getRestaurantDataSet
+import kotlinx.android.synthetic.main.activity_movie.*
 
 class MovieActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMovieBinding
     private lateinit var viewModel: MovieViewModel
 
-    private lateinit var adapter : MovieAdapter
+    private lateinit var Adapter : MovieAdapter
     private lateinit var recyclerView: RecyclerView
     private var count : Int = 0
-    var data: List<NowPlayingResult> = listOf()
-        set(value) {
-            field = value
-        }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie)
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
-        adapter = MovieAdapter()
+
+        //Log.e("Tile--------------->",viewModel.getdataNowPlaying().toString())
+
+
+
         supportFragmentManager.commit {
+            //setupToolbar()
             setReorderingAllowed(true)
             replace<TopRatedFragment>(R.id.fragment_movie_container_view)
             addToBackStack(null)
@@ -47,7 +51,7 @@ class MovieActivity : AppCompatActivity() {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
                         setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                        replace<NowPlayingFragment>(R.id.fragment_container_view)
+                        replace<NowPlayingFragment>(R.id.fragment_movie_container_view)
                         addToBackStack(null)
 
                     }
@@ -57,7 +61,7 @@ class MovieActivity : AppCompatActivity() {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
                         setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                        replace<TopRatedFragment>(R.id.fragment_container_view)
+                        replace<TopRatedFragment>(R.id.fragment_movie_container_view)
                         addToBackStack(null)
                     }
                     true
@@ -65,11 +69,10 @@ class MovieActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        setupToolbar()
+
     }
     override fun onStart() {
         super.onStart()
-        viewModel.getNowPlaying()
     }
     fun setupToolbar(){
         val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
@@ -99,3 +102,5 @@ class MovieActivity : AppCompatActivity() {
 //        return  true
 //    }
 }
+
+

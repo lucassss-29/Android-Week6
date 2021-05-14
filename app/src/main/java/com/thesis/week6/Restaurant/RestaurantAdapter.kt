@@ -52,11 +52,11 @@ class RestaurantAdapter:RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
             .load(item.avatar)
             .into(holder.imgAvatar)
 //        holder.imgAvatar.setImageResource(item.avatar)
-        holder.heartBox.setChecked(item.fav)
-        holder.heartBox!!.setOnCheckedChangeListener{buttonView, isChecked ->
-            listener?.onClickCheckBox(item,isChecked)
-            item.fav = isChecked
-        }
+       // holder.heartBox.setChecked(item.fav)
+       // holder.heartBox!!.setOnCheckedChangeListener{buttonView, isChecked ->
+         //   listener?.onClickCheckBox(item,isChecked)
+       //     item.fav = isChecked
+      //  }
 
     }
     override fun getItemCount(): Int {
@@ -76,7 +76,6 @@ class RestaurantAdapter:RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
         val tvResName = itemView.findViewById<TextView>(R.id.tvResName)
         val tvResAddress = itemView.findViewById<TextView>(R.id.tvResAddress)
         val imgAvatar = itemView.findViewById<ImageView>(R.id.imageView)
-        var heartBox = itemView.findViewById<CheckBox>(R.id.Heartbox)
     }
 
 

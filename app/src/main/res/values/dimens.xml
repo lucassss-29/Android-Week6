@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--    distances-->
+    <dimen name="distance_380dp">190dp</dimen>
+    <dimen name="distance_300dp">150dp</dimen>
     <dimen name="distance_200dp">200dp</dimen>
     <dimen name="distance_180dp">180dp</dimen>
     <dimen name="distance_100dp">100dp</dimen>
