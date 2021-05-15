@@ -1,4 +1,4 @@
-package com.thesis.week6.Movie
+package com.thesis.week6.Movie.TopRated
 
 data class TopRatedRes (
     val page: Long,

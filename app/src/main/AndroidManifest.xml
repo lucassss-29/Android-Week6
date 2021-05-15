@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidChallengeW3">
         <activity android:name="com.thesis.week6.Restaurant.RestaurantActivity"></activity>
+        <activity android:name=".Movie.Activity.MovieActivity"/>
         <activity android:name="com.thesis.week6.Restaurant.Restaurant" />
         <activity android:name=".WelcomeActivity" />
         <activity

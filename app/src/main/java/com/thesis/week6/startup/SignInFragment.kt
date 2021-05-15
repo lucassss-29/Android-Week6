@@ -12,7 +12,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.thesis.week6.Movie.MovieActivity
+import com.thesis.week6.Movie.Activity.MovieActivity
 import com.thesis.week6.R
 import com.thesis.week6.Restaurant.RestaurantActivity
 import com.thesis.week6.UserInfo.User

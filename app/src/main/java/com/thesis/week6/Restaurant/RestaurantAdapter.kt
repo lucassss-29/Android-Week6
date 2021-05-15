@@ -73,9 +73,9 @@ class RestaurantAdapter:RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val tvResName = itemView.findViewById<TextView>(R.id.tvResName)
-        val tvResAddress = itemView.findViewById<TextView>(R.id.tvResAddress)
-        val imgAvatar = itemView.findViewById<ImageView>(R.id.imageView)
+        val tvResName = itemView.findViewById<TextView>(R.id.tv_res_name)
+        val tvResAddress = itemView.findViewById<TextView>(R.id.tv_res_add)
+        val imgAvatar = itemView.findViewById<ImageView>(R.id.iv_res)
         var heartBox = itemView.findViewById<CheckBox>(R.id.Heartbox)
     }
 
