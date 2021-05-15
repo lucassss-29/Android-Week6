@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +13,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.thesis.week6.R
 import com.thesis.week6.databinding.ActivityMovieBinding
+import kotlinx.android.synthetic.main.activity_restaurant.*
 
 class MovieActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMovieBinding
@@ -37,6 +41,7 @@ class MovieActivity : AppCompatActivity() {
             addToBackStack(null)
 
         }
+
         binding.navigationMovieView.setOnNavigationItemSelectedListener { item->
             when(item.itemId){
                 R.id.navigation_nowplaying ->{
@@ -74,20 +79,20 @@ class MovieActivity : AppCompatActivity() {
         inflater.inflate(R.menu.main_menu,menu)
         return true
     }
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.change_layout -> {
-//                val isLinearSwitched : Boolean = adapter.toggleItemViewType()
-//                if (isLinearSwitched){
-//                    rcList.layoutManager = LinearLayoutManager(this)
-//                    item.title = "GRID"
-//                }
-//                else {
-//                    rcList.layoutManager = GridLayoutManager(this,2)
-//                    item.title = "LIST"
-//                }
-//            }
-//        }
-//        return  true
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.change_layout -> {
+                val isLinearSwitched : Boolean = adapter.toggleItemViewType()
+                if (isLinearSwitched){
+                    rcList.layoutManager = LinearLayoutManager(this)
+                    item.title = "GRID"
+                }
+                else {
+                    rcList.layoutManager = GridLayoutManager(this,2)
+                    item.title = "LIST"
+                }
+            }
+        }
+        return  true
+    }
 }
