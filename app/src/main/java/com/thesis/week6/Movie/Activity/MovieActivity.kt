@@ -1,36 +1,25 @@
 package com.thesis.week6.Movie.Activity
 
 import android.os.Bundle
-import android.text.BoringLayout
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.widget.Toolbar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.thesis.week6.Movie.Adapter.NowPlayingAdapter
 import com.thesis.week6.Movie.Adapter.TopRatedAdapter
-import com.thesis.week6.Movie.Adapter.isSwitchView
-import com.thesis.week6.Movie.Detail.NowPlayingDetailFragment
 import com.thesis.week6.Movie.NowPlaying.NowPlayingFragment
-import com.thesis.week6.Movie.NowPlaying.NowPlayingResult
-import com.thesis.week6.Movie.NowPlaying.mViewModel
 import com.thesis.week6.Movie.TopRated.TopRatedFragment
 import com.thesis.week6.Movie.ViewModel.MovieViewModel
 import com.thesis.week6.R
 import com.thesis.week6.databinding.ActivityMovieBinding
-import kotlinx.android.synthetic.main.fragment_fav.*
 
 class MovieActivity : AppCompatActivity() {
 
@@ -38,6 +27,8 @@ class MovieActivity : AppCompatActivity() {
     lateinit var movieViewModel: MovieViewModel
     private lateinit var nAdapter: NowPlayingAdapter
     private lateinit var tAdapter: TopRatedAdapter
+    private lateinit var toolbar_mv: Toolbar
+    private var menu: Menu? = null
     public var isLinearSwitched: Boolean = true
     public var t_isLinearSwitched: Boolean = true
 
@@ -58,9 +49,9 @@ class MovieActivity : AppCompatActivity() {
             addToBackStack(null)
         }
 
-        binding.navigationMovieView.setOnNavigationItemSelectedListener {item ->
+        binding.navigationMovieView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId){
-                R.id.navigation_nowplaying-> {
+                R.id.navigation_nowplaying -> {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
                         replace<NowPlayingFragment>(R.id.fragment_movie_container_view)
@@ -89,7 +80,7 @@ class MovieActivity : AppCompatActivity() {
     }
 
     fun setupMovieToolbar(){
-        val toolbar_mv: Toolbar = findViewById<View>(R.id.toolbar_movie) as Toolbar
+        toolbar_mv = findViewById<View>(R.id.toolbar_movie) as Toolbar
         setSupportActionBar(toolbar_mv)
         supportActionBar?.title = "Movie"
     }
@@ -97,6 +88,7 @@ class MovieActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         var inflater : MenuInflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
+        this.menu = menu
         return true
     }
 
@@ -104,6 +96,15 @@ class MovieActivity : AppCompatActivity() {
         when (item.itemId){
             R.id.change_layout -> {
                 isLinearSwitched = nAdapter.toogleItemViewType()
+                if (isLinearSwitched) {
+//                    toolbar_movie?.setLogo(R.drawable.ic_movie_listview)
+                    menu?.getItem(0)?.setIcon(R.drawable.ic_toolbar_grid)
+                    Toast.makeText(this, "Refresh Page", Toast.LENGTH_SHORT).show()
+                } else {
+//                    toolbar_movie?.setLogo(R.drawable.ic_toolbar_grid)
+                    menu?.getItem(0)?.setIcon(R.drawable.ic_movie_listview)
+                    Toast.makeText(this, "Refresh Page", Toast.LENGTH_SHORT).show()
+                }
                 Log.e("isLinearSwitched =", isLinearSwitched.toString())
                 t_isLinearSwitched = tAdapter.toogleItemViewType()
                 Log.e("t_isLinearSwitched =", t_isLinearSwitched.toString())
