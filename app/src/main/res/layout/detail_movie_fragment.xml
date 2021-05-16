@@ -14,11 +14,9 @@
 
         <ImageView
             android:id="@+id/img_movie_backdrop"
-            android:layout_width="506dp"
-            android:layout_height="174dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="355dp"
+            android:layout_height="208dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -36,28 +34,27 @@
 
         <ImageView
             android:id="@+id/img_movie_poster"
-            android:layout_width="114dp"
-            android:layout_height="147dp"
-            android:layout_marginTop="128dp"
+            android:layout_width="104dp"
+            android:layout_height="159dp"
+            android:layout_marginTop="144dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintHorizontal_bias="0.101"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tv_movie_title"
-            android:layout_width="234dp"
-            android:layout_height="57dp"
+            android:layout_width="237dp"
+            android:layout_height="71dp"
             android:layout_margin="0dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/sofia_pro_medium"
             android:text="Title"
             android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.619"
+            app:layout_constraintHorizontal_bias="0.538"
             app:layout_constraintStart_toEndOf="@+id/img_movie_poster"
             app:layout_constraintTop_toBottomOf="@+id/img_movie_backdrop" />
 
@@ -106,21 +103,21 @@
             android:textColor="@color/white"
             android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintHorizontal_bias="0.102"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_movie_poster" />
 
         <TextView
             android:id="@+id/tv_movie_overview"
-            android:layout_width="364dp"
-            android:layout_height="207dp"
+            android:layout_width="352dp"
+            android:layout_height="216dp"
             android:fontFamily="@font/sofia_pro_medium"
-            android:text="Overview"
             android:justificationMode="inter_word"
+            android:text="Overview"
             android:textColor="@color/white"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.34"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 

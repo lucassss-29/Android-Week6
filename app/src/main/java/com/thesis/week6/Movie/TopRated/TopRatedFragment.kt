@@ -9,7 +9,11 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.thesis.week6.Movie.Adapter.TopRatedAdapter
+import com.thesis.week6.Movie.Adapter.isSwitchView
+import com.thesis.week6.Movie.Adapter.t_isSwitchView
 import com.thesis.week6.Movie.Detail.TopRatedDetailFragment
 import com.thesis.week6.Movie.ViewModel.MovieViewModel
 import com.thesis.week6.R
@@ -38,6 +42,11 @@ class TopRatedFragment : Fragment() {
                 rcList.apply {
                     tAdapter = TopRatedAdapter()
                     adapter = tAdapter
+                    if (t_isSwitchView == false ) {
+                        layoutManager = GridLayoutManager(activity, 3)
+                    } else {
+                        layoutManager = LinearLayoutManager(activity)
+                    }
                     tAdapter.data = it
                     tAdapter.listener = object : TopRatedAdapter.TopRatedAdapterListener{
                         override fun OnClickItem(Mov: TopRatedResult) {

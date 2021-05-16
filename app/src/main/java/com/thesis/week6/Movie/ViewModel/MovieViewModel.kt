@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.thesis.week6.Movie.NowPlaying.NowPlayingFragment
 import com.thesis.week6.Movie.NowPlaying.NowPlayingResult
+import com.thesis.week6.Movie.TopRated.TopRatedRes
 import com.thesis.week6.Movie.TopRated.TopRatedResult
 import com.thesis.week6.Movie.rest.RestClient
 import kotlinx.coroutines.launch

@@ -14,7 +14,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcMovieList"
+            android:id="@+id/rcList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -22,13 +22,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" >
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_movie" >
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.appcompat.widget.Toolbar
             app:title="Movie"
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_movie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/oxford_blue"
@@ -62,7 +62,7 @@
             app:layout_constraintBottom_toTopOf="@+id/navigationMovieView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rcMovieList">
+            app:layout_constraintTop_toTopOf="@+id/rcList">
 
 
         </androidx.fragment.app.FragmentContainerView>
